@@ -33,16 +33,18 @@ import java.net.*;
 import java.io.*;
 
 public class KnockKnockProtocol {
-    private String[] wordArray = {"cella", "baixa", "trompa", "lloro"}
-    private String word = wordArray[(int) Math.random() * wordArray.length()];
+    private static String[] wordArray = {"cella", "baixa", "trompa", "lloro"};
+    private static String word = wordArray[(int) (Math.random() * wordArray.length)];
+   
     private String guessedWord = new String(new char[word.length()]).replace("\0", "*");;
     private int attempts = 0;
+    private static final int MAX_ATTEMPTS = 10;
 
     public String processInput(String theInput) {
         String theOutput = null;
 
         if (attempts++ < MAX_ATTEMPTS) {
-            for (i = 0; i <= word.length(); i++) {
+            for (int i = 0; i <= word.length(); i++) {
                 if (theInput[0] == word[i]) {
                     guessedWord[i] = theInput[0];
                 }

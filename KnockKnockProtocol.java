@@ -35,74 +35,21 @@ import java.io.*;
 public class KnockKnockProtocol {
     private String[] wordArray = {"cella", "baixa", "trompa", "lloro"}
     private String word = wordArray[(int) Math.random() * wordArray.length()];
-    private String guessedWord = ;
+    private String guessedWord = new String(new char[word.length()]).replace("\0", "*");;
     private int attempts = 0;
-    private int errors = 0;
-    private static final MAX_ERRORS = 10;
-
-    private static final int WAITING = 0;
-    private static final int SENTKNOCKKNOCK = 1;
-    private static final int SENTCLUE = 2;
-    private static final int ANOTHER = 3;
-
-    private static final int NUMJOKES = 5;
-
-    private int state = WAITING;
-    private int currentJoke = 0;
-
-    private String[] clues = { "Turnip", "Little Old Lady", "Atch", "Who", "Who" };
-    private String[] answers = { "Turnip the heat, it's cold in here!",
-                                 "I didn't know you could yodel!",
-                                 "Bless you!",
-                                 "Is there an owl in here?",
-                                 "Is there an echo in here?" };
 
     public String processInput(String theInput) {
         String theOutput = null;
 
-        if (attempts == 0) {
-            guessedWord 
-        }
-
-        for (i = 0; i <= word.length(); i++) {
-            
-        }
-
-        if (state == WAITING) {
-            theOutput = "Knock! Knock!";
-            state = SENTKNOCKKNOCK;
-        } else if (state == SENTKNOCKKNOCK) {
-            if (theInput.equalsIgnoreCase("Who's there?")) {
-                theOutput = clues[currentJoke];
-                state = SENTCLUE;
-            } else {
-                theOutput = "You're supposed to say \"Who's there?\"! " +
-			    "Try again. Knock! Knock!";
+        if (attempts++ < MAX_ATTEMPTS) {
+            for (i = 0; i <= word.length(); i++) {
+                if (theInput[0] == word[i]) {
+                    guessedWord[i] = theInput[0];
+                }
             }
-        } else if (state == SENTCLUE) {
-            if (theInput.equalsIgnoreCase(clues[currentJoke] + " who?")) {
-                theOutput = answers[currentJoke] + " Want another? (y/n)";
-                state = ANOTHER;
-            } else {
-                theOutput = "You're supposed to say \"" + 
-			    clues[currentJoke] + 
-			    " who?\"" + 
-			    "! Try again. Knock! Knock!";
-                state = SENTKNOCKKNOCK;
-            }
-        } else if (state == ANOTHER) {
-            if (theInput.equalsIgnoreCase("y")) {
-                theOutput = "Knock! Knock!";
-                if (currentJoke == (NUMJOKES - 1))
-                    currentJoke = 0;
-                else
-                    currentJoke++;
-                state = SENTKNOCKKNOCK;
-            } else {
-                theOutput = "Bye.";
-                state = WAITING;
-            }
+            theOutput = guessedWord;
+        } else {
+            theOutput = "Massa intents";
         }
-        return theOutput;
     }
 }

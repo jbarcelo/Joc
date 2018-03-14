@@ -57,5 +57,6 @@ public class KnockKnockProtocol {
         } else {
             theOutput = "Massa intents";
         }
+        return theOutput;
     }
 }

@@ -33,7 +33,7 @@ import java.net.*;
 import java.io.*;
 import java.util.*;
 
-public class KnockKnockProtocol {
+public class JocProtocol {
     private static String[] wordArray = {"cella", "baixa", "trompa", "lloro"};
     private static String word = wordArray[(int) (Math.random() * wordArray.length)];
    

@@ -34,8 +34,8 @@ import java.io.*;
 import java.util.*;
 
 public class JocProtocol {
-    private static String[] wordArray = {"cella", "baixa", "trompa", "lloro"};
-    private static String word = wordArray[(int) (Math.random() * wordArray.length)];
+    private static String[] wordArray = {"cella", "baixa", "trompa", "lloro", "truita", "patata"};
+    private String word = wordArray[(int) (Math.random() * wordArray.length)];
    
     private int attempts = 0;
     private static final int MAX_ATTEMPTS = 10;

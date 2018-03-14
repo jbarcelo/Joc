@@ -31,14 +31,15 @@
 
 import java.net.*;
 import java.io.*;
+import java.util.*;
 
 public class KnockKnockProtocol {
     private static String[] wordArray = {"cella", "baixa", "trompa", "lloro"};
     private static String word = wordArray[(int) (Math.random() * wordArray.length)];
    
-    private char[] guessedWord = new String(new char[word.length()]).replace("\0", "*").toCharArray();;
     private int attempts = 0;
     private static final int MAX_ATTEMPTS = 10;
+    LinkedList<Character> guessedLetters = new LinkedList<Character>();
 
     public String processInput(String theInput) {
 	char[] theInputCharArray = theInput.toCharArray();

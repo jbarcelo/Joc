@@ -44,7 +44,9 @@ public class KnockKnockProtocol {
     public String processInput(String theInput) {
         String theOutput = "";
 
-        guessedLetters.add(theInput.charAt(0));
+        if (theInput!=null) {
+            guessedLetters.add(theInput.charAt(0));
+        }
 
         if (attempts++ < MAX_ATTEMPTS) {
             for (int i = 0; i < word.length(); i++) {

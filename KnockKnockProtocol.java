@@ -42,16 +42,18 @@ public class KnockKnockProtocol {
     LinkedList<Character> guessedLetters = new LinkedList<Character>();
 
     public String processInput(String theInput) {
-	char[] theInputCharArray = theInput.toCharArray();
-        String theOutput = null;
+        String theOutput = "";
+
+        guessedLetters.add(theInput.charAt(0));
 
         if (attempts++ < MAX_ATTEMPTS) {
-            for (int i = 0; i <= word.length(); i++) {
-                if (theInputCharArray[0] == word[i]) {
-                    guessedWord[i] = theInputCharArray[0];
+            for (int i = 0; i < word.length(); i++) {
+                if (guessedLetters.contains(word.charAt(i))) {
+                    theOutput = theOutput + word.charAt(i);
+                } else {
+                    theOutput = theOutput + '*';
                 }
             }
-            theOutput = new String(guessedWord);
         } else {
             theOutput = "Massa intents";
         }
